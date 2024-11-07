@@ -1,5 +1,5 @@
 # AICT Future TF
-## Project : RAG for all PDF links from MS Learn site
+## Project : RAG for MS Learn document
 
 ### Step 1 : scrap all MS product URL
 ### Step 2 : scrap all PDF URL for target MS product
