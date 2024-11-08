@@ -1,4 +1,4 @@
-# AICT Future TF
+# AICT Future TF 파견 프로젝트(2)
 ## [Project] RAG for MS Learn document
 
 ### Step 1 : scrap all MS product URL
