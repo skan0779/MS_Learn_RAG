@@ -1,0 +1,76 @@
+0. apply MS Azure Landing Zone Subscription  
+
+    - 일반서비스(prd/dev)
+        > IT's Portal 접속
+        > Cloud 신청 등록
+        > IT 단위서비스 찾기 : co013801
+        > 세부내용 작성
+
+    - Sandbox 구독 (poc)
+        > IT's Portal 접속
+        > Cloud 신청 등록
+        > IT 단위서비스 찾기 : co001501
+        > 요청유형: 기타
+        > Cloud 유형: Azure
+        > 사업명: PoC 구독 요청
+        > 도메인: IT 지원
+        > 담당자: Cloud 엔지니어링팀
+
+1. create Resource Group
+    > rg-az01-(단위서비스코드)-(prd/dev/sbox)-(단위서비스명)-(시퀀스)
+
+2. create Vertual Network
+    > vnet-az01-(prd/dev/sbox)-(단위서비스명)-(시퀀스)
+    > IP 주소: 10.241.255.0 / 25
+
+3. create Subnet
+    = Vertual Network > Settings > Subnets
+    > sbn-az01-(prd/dev/sbox)-(단위서비스명)-(용도)
+    > IPv4 주소 공간 포함
+    > IPv4 주소 범위: 10.241.255.0 / 25
+    > 시작 주소: 10.241.255.0
+    > 크기: /27
+
+4. create Storage Account
+    > staz01(prd/dev/sbox)(단위서비스명)(구독번호)(시퀀스)
+    > 성능: 표준
+    > 중복: LRS
+    > 스토리지 계정 키 엑세스 사용: 미사용
+    > 네트워크 엑세스: 선택한 가상 네트워크 및 IP 주소에서 퍼블릭 엑세스 사용
+    > 연결할 Virtual Network & Subnet 입력
+
+5. setting Storage Account (Fire Wall)
+    = Storage Account > Security + Networking > Networking
+    > 내 IP 추가
+
+6. create Key Vault
+    > kv-az01-(prd/dev/sbox)-(단위서비스명)-(시퀀스)
+    > 공용 엑세스 사용: 허용 (Sandbox 구독)
+
+7. create AI Hub
+    > aihub-az01-(prd/dev/sbox)-(단위서비스명)-(시퀀스)
+    > 지역: East US 2 (사용하고자 하는 모델 배포지역 선택)
+    - create AI Service
+        > aisvc-az01-(prd/dev/sbox)-(단위서비스명)-(시퀀스)
+    - assign Storage Account
+    - assign Key Vault
+    > 네트워크 격리: 공개 (sbox 구독) / 인터넷 아웃바운드를 사용한 비공개 (prd/dev 구독)
+    > 스토리지 계정 엑세스 유형: ID 기반 엑세스
+    > 공유 키 엑세스 사용 안 함: 허용
+
+8. setting AI Hub (Private endpoint / Outbound access)
+    = AI Hub > Settings > Networking
+    > pe-az01-(prd/dev/sbox)-(단위서비스명)-(시퀀스)
+    > 인터넷 아웃바운드 허용: 허용
+    > 저장
+
+9. setting AI Hub (AI Service)
+    = AI Hub > New connection > Azure AI Services
+    > Authentication: Microsoft Entra ID
+    > Add connection
+
+10. create AI Project
+    > project name
+    > deploy LLM model
+    > create Vector Store (MS_Learn_Vector_Store_v1.py)
+    > run LLM with thread (MS_Learn_RAG_v1.py)
