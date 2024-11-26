@@ -1,5 +1,7 @@
 # AICT Future TF 파견 프로젝트(2)
-## [Project] RAG for MS Learn Document
+## [Project] MS Learn Expert LLM service with RAG
+https://www.notion.so/MS-Learn-Expert-14a7189c026b80c38dd9e824451c2c0d?pvs=4
+
 
 #### Step 1 : run MS_Learn_URL_Scrapper_v2.py (지정한 MS Product에 관련된 document 파일이 있는 모든 url을 json 파일로 저장)
 #### Step 2 : run MS_Learn_PDF_Scrapper_v2.py (pdf 파일의 url을 json 파일로 저장)
