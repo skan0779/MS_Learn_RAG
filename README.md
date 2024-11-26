@@ -1,17 +1,10 @@
 # AICT Future TF 파견 프로젝트(2)
 ## [Project] MS Learn Expert LLM service with RAG
-https://www.notion.so/MS-Learn-Expert-14a7189c026b80c38dd9e824451c2c0d?pvs=4
 
+### Step 1~3 : MS Learn에 존재하는 모든 공식문서 다운로드 (데이터 수집)
+### Step 4 : 파일 분할 (데이터 전처리)
+### Step 5 : Assistant, Vector Store 생성 및 PDF 파일 업로드 후 임베딩 (데이터 업로드)
+### Step 6 : Router Assistant, Normal Assistant 생성
+### Step 7 : Gradio UI 생성 (출력 전처리, Routing 적용)
 
-#### Step 1 : run MS_Learn_URL_Scrapper_v2.py (지정한 MS Product에 관련된 document 파일이 있는 모든 url을 json 파일로 저장)
-#### Step 2 : run MS_Learn_PDF_Scrapper_v2.py (pdf 파일의 url을 json 파일로 저장)
-#### Step 3 : run MS_Learn_File_Scrapper_v4.py (다운로드 가능한 모든 pdf 파일을 저장)
-
-#### Step 4 : run File_Search_PDF_Splitter_v2.py (Vector Store 저장 가능 크기 및 토큰수 조정)
-
-#### Step 5 : run File_Search_Cost_Calculator_v1.py (File Search 및 Vector Store 총 예상 비용 계산)
-
-#### Step 6 : run MS_Learn_Vector_Store_v1.py (MS Azure AI Studio 에 File Search 를 활용한 Vector Store 생성)
-
-#### Step 7 : run MS_Learn_RAG_v1.py (MS Azure AI Studio 에 Assistant 를 활용하여 RAG 구현)
-
+## 참고 URL : https://www.notion.so/MS-Learn-Expert-14a7189c026b80c38dd9e824451c2c0d?pvs=4
